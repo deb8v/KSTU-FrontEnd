@@ -1,0 +1,153 @@
+<head>
+        
+    <!--
+        DOCS
+    ================================
+
+        Страпон https://bootstrap-4.ru/docs/5.1/components/navbar/#supported-content
+        Дропдаун https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_js_dropdown_filter
+        Пиздинг https://timetable.spbu.ru/MATH/StudentGroupEvents/Attestation/304513?Length=18
+        АПЕЕЕ https://portal.kuzstu.ru/api/
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Расписание СПбГУ</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700"/>
+    <link href="static/main.css" rel="stylesheet">
+    <link href="static/dev.css" rel="stylesheet">
+    
+        
+<body>
+    <div class="container-fluid initalContainerHead">
+        <nav class="navbar desimborto navbar-dark ">
+            <div class="container">
+                <div class="col-2">
+                    <!--
+                        <a class="navbar-brand">Расписание КузГТУ</a>
+                    -->
+                    <img class="navbar-brand" src="static/trash/mainlogo.png" style="padding-top: 2px;padding-right: 2px;padding-bottom: 2px;padding-left: 2px;">
+                    
+                </div>
+                <div class="col-xl-6 col-sm-4">
+                    <!---
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav" style="flex-direction: row;">
+                          <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                          <a class="nav-link" href="#">Экспорт календаря</a>
+                          <a class="nav-link" href="#">Весь функционал</a>
+                          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Кабинет препода</a>
+                        </div>
+                      </div>
+                    -->
+                </div>
+                <div class='col-xl-6 col-sm-6'>
+                    <form class="d-flex saparento">
+                        <input class="form-control me-2" placeholder="хуй8" aria-label="Search" id="myInput" onclick="myFunction()" onkeyup="filterFunction()">
+                        <div id="myDropdown" class="dropdown-content" style="margin-top: 38px;">
+                            <a href="#about">About</a> <!--ТУТ вот после аякспоиска будет выводиться ID!! и уже он записываться в хранилище а не высылать текст в жопу анализу рандома-->
+                            <a href="#base">Base</a>
+                            <a href="#blog">Blog</a>
+                            <a href="#contact">Contact</a>
+                            <a href="#custom">Custom</a>
+                            <a href="#support">Support</a>
+                            <a href="#tools">Tools</a>
+                          </div>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-success" type="submit">изменить</button>
+                            
+                          </div>
+                    </form>
+                </div>
+            </div>
+          </nav>
+    </div>
+    <br>
+    <div class="container">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small>And some small print.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small class="text-muted">And some muted small print.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small class="text-muted">And some muted small print.</small>
+            </a>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small>And some small print.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small class="text-muted">And some muted small print.</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">List group item heading</h5>
+                <small class="text-muted">3 days ago</small>
+            </div>
+            <p class="mb-1">Some placeholder content in a paragraph.</p>
+            <small class="text-muted">And some muted small print.</small>
+            </a>
+        </div>
+    </div>
+</body>
+
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+    </script>
