@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Расписание СПбГУ</title>
+    <title>Расписание занятий КузГТУ: преподователи и студенты</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
@@ -47,107 +47,205 @@
                       </div>
                     -->
                 </div>
-                <div class='col-xl-6 col-sm-6'>
+                <div class='col-xl-6 col-sm-6 p0'>
                     <form class="d-flex saparento">
-                        <input class="form-control me-2" placeholder="хуй8" aria-label="Search" id="myInput" onclick="myFunction()" onkeyup="filterFunction()">
-                        <div id="myDropdown" class="dropdown-content" style="margin-top: 38px;">
-                            <a href="#about">About</a> <!--ТУТ вот после аякспоиска будет выводиться ID!! и уже он записываться в хранилище а не высылать текст в жопу анализу рандома-->
-                            <a href="#base">Base</a>
-                            <a href="#blog">Blog</a>
-                            <a href="#contact">Contact</a>
-                            <a href="#custom">Custom</a>
-                            <a href="#support">Support</a>
-                            <a href="#tools">Tools</a>
+                        <input class="formespateroindutodasfind form-control me-2" type="text" autocomplete="off" placeholder="нехватаетджаваскрипта!!" aria-label="Search" id="myInput" onmousedown="myFunction()" onkeyup="filterFunction()">
+                        <div id="myDropdown" class="dropdown-content formespateroindutodasfind" style="margin-top: 38px;">
+                            <!--http://localhost:8000/icsshudle/web-api/search?tgt=КСС вонтентим апе---> 
+                                <!--ТУТ вот после аякспоиска будет выводиться ID!! и уже он записываться в хранилище а не высылать текст в жопу анализу рандома-->
+
                           </div>
+                          
                         <div class="dropdown">
-                            <button class="btn btn-outline-success" type="submit">изменить</button>
+                            <button onclick="updateRasp()" class="btn btn-outline-primary">обновить</button>
                             
                           </div>
+                          
                     </form>
                 </div>
             </div>
           </nav>
     </div>
-    <br>
-    <div class="container">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small>3 days ago</small>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small>And some small print.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action active">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small class="text-muted">And some muted small print.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small class="text-muted">And some muted small print.</small>
-            </a>
-        </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action " aria-current="true">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small>3 days ago</small>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small>And some small print.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small class="text-muted">And some muted small print.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">List group item heading</h5>
-                <small class="text-muted">3 days ago</small>
-            </div>
-            <p class="mb-1">Some placeholder content in a paragraph.</p>
-            <small class="text-muted">And some muted small print.</small>
-            </a>
-        </div>
-    </div>
+    
+    <div id='body'></div>
 </body>
 
 <script>
+    
+    fsdadp=0
+    //ftgttext=localStorage.getItem('tgttext')
+    ftgtid = '-75942'
+    ftgttext='Коротин Владимир Олегович'
+    //ftgtid=localStorage.getItem('tgtid')
+    if(ftgttext!=null && ftgtid!=null){
+        document.getElementById("myInput").placeholder=ftgttext;
+        }
+    else{
+        document.getElementById("myInput").placeholder="Нажмите чтобы искать"
+        }
+    
+    const baseURL='http://localhost:8000/icsshudle/web-api/'
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
+
+    function plotRaspDiv(isTeacher,name,content){
+        console.log(isTeacher,"хухйуххуйхуй")
+        ///ВОТТУТВОТ СОРТИРОВКУ ПОДАТЕ И КАСТРАЦИЮ
+        for(i in content){
+            
+            dateDisplay=content[i]['date']
+            up='<div class="container" style="max-width:550px;"><h1 class="display-6 maintainerColorTextDisplay">'+dateDisplay+'</h1><div class="list-group">'
+            down='</div></div>'//name это группа или имя препода
+            body=subPlot(isTeacher,name,content[i]['content'])
+
+            var sp = document.createElement("a");
+            sp.innerHTML=up+body+down
+            document.getElementById("body").appendChild(sp);
+        }
+        
+
+
+
+        function subPlot(isTeacher,subDate,subContent){
+            //console.log('subPlot',subDate,isTeacher,subContent)
+            dictCallstring=[['09:00', '10:30'], ['10:50', '12:20'], ['13:20', '14:50'], ['15:10', '16:40'], ['17:00', '18:30'], ['18:50', '20:20'], ['20:30', '22:00']]
+            body=''
+            for(i in subContent){
+                console.log('subcon',isTeacher,subContent)
+                if(subContent[i]['place']!='лыж/б'){
+                educorus=Math.floor((subContent[i]['place'].replace("а", ''))/1000,0)-1
+    educar=["улица Демьяна Бедного, 4б",
+            "улица Весенняя, 28",
+            "улица Дзержинского, 9",
+            "улица Красноармейская, 117",
+            "улица 50 лет Октября, 19",
+            "улица 50 лет Октября, 17",
+            "улица Дзержинского, 9Б"]
+                educzone=educar[educorus]
+                }else{
+                    educzone="проспект Шахтёров, 14Б"
+                }
+                educzone=educzone//+"  <u><span onclick=(\"window.location.href='https://yandex.ru/maps/-/CCUmzMqEHC'\")>где</span></u>"
+                edGroupId=''; if(isTeacher==true){
+                    //edGroupId='<b>'+subContent[i]['education_group_name']+'</b>   ';
+                    
+                }
+                smallObj=''; if(isTeacher==true){
+                    smallObj='<u><small onclick=\"seth(`'+subContent[i]['education_group_id']+'`,`'+validName(subContent[i]['education_group_name'])+'`)\">'+subContent[i]['education_group_name']+'</small></u>';
+                
+                }else{
+                        smallObj='<u><small  onclick=\"seth(`-'+subContent[i]['teacher_id']+'`,`'+validName(subContent[i]['teacher_name'])+'`)\">'+validName(subContent[i]['teacher_name'])+'</small></u>';}
+                body+='<div href="#" class="list-group-item list-group-item-action " aria-current="true">'+
+            '<div class="d-flex w-100 justify-content-between">'+
+            '    <h5 class="mb-1">'+edGroupId+subContent[i]['type']+""+subContent[i]['subject']+'</h5>'+
+            smallObj+
+            '</div>'+
+            '<p class="mb-1">'+edGroupId+subContent[i]['place']+', <i>'+dictCallstring[subContent[i]['lesson_number']-1][0]+"-"+dictCallstring[subContent[i]['lesson_number']-1][1]+'</i></p>'+
+            '<small class="text-muted">'+educzone+'</small>'+
+            '</div>'    
+            }
+            
+            
+            return body
+        }
+    }
+    function updateRasp(){
+        
+        //http://localhost:8000/icsshudle/web-api/-61189
+        getJSON(baseURL+'rasp?tgt='+ftgtid.toString(),
+        function(err, data) {
+        if (err !== null) {
+            alert('Свеятой светильник!!! Мы обосрались! И вот как: ' + err);
+        } else {
+            
+            rd=data
+            console.log(rd);
+            document.getElementById("body").innerHTML=""
+            plotRaspDiv(rd['isteacher'],rd['name'],rd['content'])
+            
+        }
+        });
+        
+        return 0
+    }
+
+
+    
     function myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
     }
-    
+    rda=0
     function filterFunction() {
       var input, filter, ul, li, a, i;
       input = document.getElementById("myInput");
       filter = input.value.toUpperCase();
-      div = document.getElementById("myDropdown");
-      a = div.getElementsByTagName("a");
-      for (i = 0; i < a.length; i++) {
-        txtValue = a[i].textContent || a[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          a[i].style.display = "";
+      fsdpd=filter
+      getJSON(baseURL+'search?tgt='+filter,
+        function(err, data) {
+        if (err !== null) {
+            alert('Свеятой светильник господь наш небесный Ярило!!! Я не смог в ajax, давай разбирайся ' + err);
         } else {
-          a[i].style.display = "none";
+            
+            rd=data.slice(0,6)
+            console.log(rd);
+            document.getElementById("myDropdown").innerHTML=""
+            for(t in rd){
+                rda=rd[t]
+
+                addSearchLine(rda['ID'],rda['NAME'].toString())
+                console.log('r',rda['NAME'].toString())
+            }
         }
-      }
+        });
+      div = document.getElementById("myDropdown");
+      
     }
+    function seth(id,text){    
+        console.log("Set",id,text)
+        localStorage.setItem('tgtid', id);
+        localStorage.setItem('tgttext', text);
+        ftgtid=id
+        ftgttext=text
+        document.getElementById("myInput").placeholder=text
+        clear()
+        updateRasp()
+    }
+    function clear(){
+        document.getElementById("myDropdown").innerHTML=""
+        document.getElementById("myDropdown").classList.remove("show")
+        document.getElementById("myInput").value=''
+    }
+    function addSearchLine(id,name){
+        var sp = document.createElement("a");
+
+        name=name
+        sp.innerHTML="<a id='"+id+"' onclick='seth("+id+",`"+name+"`)'>"+name+"</a>"
+        //sp.innerHTML = "<input type='button' title='Bold' value='spoiler' onclick=\"simpletag('spoiler','','','message','')\" class='codeButtons' id='b' style='width:20px;font-weight:bold'>";
+        //sp.style.paddingRight = "1px";
+        sp.id = "GUS"+id; //ID должен быть уникален!
+ 
+        document.getElementById("myDropdown").appendChild(sp);
+    }
+
+    var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status === 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status, xhr.response);
+      }
+    };
+    xhr.send();
+};
+    function validName(input){
+
+        
+    return input.replace(/(.+) (.).+ (.).+/, '$1 $2. $3.');
+
+    }
+updateRasp()
     </script>
