@@ -14,9 +14,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Расписание занятий КузГТУ: преподователи и студенты</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700"/>
@@ -74,8 +74,10 @@
     
     fsdadp=0
     //ftgttext=localStorage.getItem('tgttext')
-    ftgtid = '-75942'
-    ftgttext='Коротин Владимир Олегович'
+    //ftgtid = '-75942'
+    //ftgttext='Коротин Владимир Олегович'
+    ftgtid=6265
+    ftgttext='КСс-211'
     //ftgtid=localStorage.getItem('tgtid')
     if(ftgttext!=null && ftgtid!=null){
         document.getElementById("myInput").placeholder=ftgttext;
@@ -108,12 +110,13 @@
 
         function subPlot(isTeacher,subDate,subContent){
             //console.log('subPlot',subDate,isTeacher,subContent)
+            costi=['&#9856;','&#9857;','&#9858;','&#9859;','&#9860;','&#9861;']
             dictCallstring=[['09:00', '10:30'], ['10:50', '12:20'], ['13:20', '14:50'], ['15:10', '16:40'], ['17:00', '18:30'], ['18:50', '20:20'], ['20:30', '22:00']]
             body=''
             for(i in subContent){
                 console.log('subcon',isTeacher,subContent)
                 if(subContent[i]['place']!='лыж/б'){
-                educorus=Math.floor((subContent[i]['place'].replace("а", ''))/1000,0)-1
+                educorus=Math.floor((subContent[i]['place'].replace("а", ''))/1000,0)   
     educar=["улица Демьяна Бедного, 4б",
             "улица Весенняя, 28",
             "улица Дзержинского, 9",
@@ -135,13 +138,15 @@
                 
                 }else{
                         smallObj='<u><small  onclick=\"seth(`-'+subContent[i]['teacher_id']+'`,`'+validName(subContent[i]['teacher_name'])+'`)\">'+validName(subContent[i]['teacher_name'])+'</small></u>';}
-                body+='<div href="#" class="list-group-item list-group-item-action " aria-current="true">'+
+                colorbir=" toColorBir-"+subContent[i]['lesson_number'].toString()
+
+                        body+='<div href="#" class="list-group-item list-group-item-action'+colorbir+'" aria-current="true">'+
             '<div class="d-flex w-100 justify-content-between">'+
-            '    <h5 class="mb-1">'+edGroupId+subContent[i]['type']+""+subContent[i]['subject']+'</h5>'+
+            '    <h5 class="mb-1">'+costi[subContent[i]['lesson_number']-1]+" "+edGroupId+subContent[i]['type']+""+subContent[i]['subject']+'</h5>'+
             smallObj+
             '</div>'+
-            '<p class="mb-1">'+edGroupId+subContent[i]['place']+', <i>'+dictCallstring[subContent[i]['lesson_number']-1][0]+"-"+dictCallstring[subContent[i]['lesson_number']-1][1]+'</i></p>'+
-            '<small class="text-muted">'+educzone+'</small>'+
+            '<p class="mb-1">'+edGroupId+subContent[i]['place']+', ('+subContent[i]['lesson_number']+')<i>'+dictCallstring[subContent[i]['lesson_number']-1][0]+"-"+dictCallstring[subContent[i]['lesson_number']-1][1]+'</i></p>'+
+            '<small class="text-muted">'+educzone+" edit:"+subContent[i]['id']+'</small>'+
             '</div>'    
             }
             
@@ -186,7 +191,7 @@
             alert('Свеятой светильник господь наш небесный Ярило!!! Я не смог в ajax, давай разбирайся ' + err);
         } else {
             
-            rd=data.slice(0,6)
+            rd=data.slice(0,10)
             console.log(rd);
             document.getElementById("myDropdown").innerHTML=""
             for(t in rd){
