@@ -1,22 +1,62 @@
+
 .toColorBir-1{
-    background-color: #dc3545;
+    border-color: #dc3545;
+    border-width: 3px;
+    border-style: none outset none outset;
+    
 }
 .toColorBir-2{
-    background-color: #ffc107;
+    border-color: #ffc107;
+    border-width: 3px;
+    border-style: none outset none outset;
 }
 .toColorBir-3{
-    background-color:#39b301;
+    border-color:#39b301;
+    border-width: 3px;
+    border-style: none outset none outset;
 }
 .toColorBir-4{
-    background-color:#4d12bb;
+    border-color:#4d12bb;
+    border-width: 3px;
+    border-style: none outset none outset;
 }
 .toColorBir-5{
-    background-color:#00afa0;
+    border-color:#00afa0;
+    border-width: 3px;
+    border-style: none outset none outset;
 }
 .toColorBir-6{
-    background-color:#ffffff;
+    border-color:#ffffff;
+    border-width: 3px;
+    border-style: none outset none outset;
+    
 }
-
+.listgroupmarkup{
+    border-left: 2px solid #ddd;
+    border-right: 2px 2px 2px solid #ddd;
+}
+.toColorBirType-л{
+    background-color:#39b301;
+}
+.toColorBirType-пр{
+    background-color: #ffc107;
+    
+}
+.toColorBirType-лаб{
+    background-color: #dc3545;
+    
+}
+.upnametext{
+    text-align: right;
+}
+.toDefWidth{
+    width: 0px;
+    padding: 5px;
+    border-color: black;
+border-width: 1px;
+border-style: outset
+}
+.list-group{border-radius: 0;}
 .maintainerColorTextDisplay{
     color: #e95420;;
 }
@@ -34,6 +74,7 @@
 body{
     background-color: #262626;;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0));
+    letter-spacing: -0.048em;
 }
 .textDasGroupName{
     font-size: 7vh;

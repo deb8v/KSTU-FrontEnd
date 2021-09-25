@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    
+    <link rel="shortcut icon" href="static/trash/minilogo.png" type="image/png"/>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700"/>
     <link href="static/main.css" rel="stylesheet">
@@ -65,7 +65,11 @@
                 </div>
             </div>
           </nav>
+          
     </div>
+    
+
+
     
     <div id='body'></div>
 </body>
@@ -89,7 +93,7 @@
     const baseURL='http://localhost:8000/icsshudle/web-api/'
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
-
+    function togler(id){document.getElementById("scidred"+id.toString()).classList.toggle('show');}
     function plotRaspDiv(isTeacher,name,content){
         console.log(isTeacher,"хухйуххуйхуй")
         ///ВОТТУТВОТ СОРТИРОВКУ ПОДАТЕ И КАСТРАЦИЮ
@@ -107,52 +111,90 @@
         
 
 
-
+        
         function subPlot(isTeacher,subDate,subContent){
             //console.log('subPlot',subDate,isTeacher,subContent)
             costi=['&#9856;','&#9857;','&#9858;','&#9859;','&#9860;','&#9861;']
             dictCallstring=[['09:00', '10:30'], ['10:50', '12:20'], ['13:20', '14:50'], ['15:10', '16:40'], ['17:00', '18:30'], ['18:50', '20:20'], ['20:30', '22:00']]
             body=''
+            
             for(i in subContent){
                 console.log('subcon',isTeacher,subContent)
-                if(subContent[i]['place']!='лыж/б'){
+                educzone=subContent[i]['place']+"(адрес не найден)"
+                if(1==1){
                 educorus=Math.floor((subContent[i]['place'].replace("а", ''))/1000,0)   
-    educar=["улица Демьяна Бедного, 4б",
-            "улица Весенняя, 28",
-            "улица Дзержинского, 9",
-            "улица Красноармейская, 117",
-            "улица 50 лет Октября, 19",
-            "улица 50 лет Октября, 17",
-            "улица Дзержинского, 9Б"]
-                educzone=educar[educorus]
+                    educar=["улица Демьяна Бедного, 4б",
+                            "улица Весенняя, 28",
+                            "улица Дзержинского, 9",
+                            "улица Красноармейская, 117",
+                            "улица 50 лет Октября, 19",
+                            "улица 50 лет Октября, 17",
+                            "улица Дзержинского, 9Б"]
+                    if(educorus>6){educzone=subContent[i]['place']}else{educzone=educar[educorus]}
                 }else{
-                    educzone="проспект Шахтёров, 14Б"
+                    
+                    
                 }
+                if(subContent[i]['place']=='лыж/б'){educzone="проспект Шахтёров, 14Б"}
+                if(subContent[i]['place'].substring(0,3)=='Дис'){educzone="Д/О"}
+                
                 educzone=educzone//+"  <u><span onclick=(\"window.location.href='https://yandex.ru/maps/-/CCUmzMqEHC'\")>где</span></u>"
                 edGroupId=''; if(isTeacher==true){
                     //edGroupId='<b>'+subContent[i]['education_group_name']+'</b>   ';
                     
                 }
                 smallObj=''; if(isTeacher==true){
-                    smallObj='<u><small onclick=\"seth(`'+subContent[i]['education_group_id']+'`,`'+validName(subContent[i]['education_group_name'])+'`)\">'+subContent[i]['education_group_name']+'</small></u>';
+                    smallObj='<u><small class="upnametext" onclick=\"seth(`'+subContent[i]['education_group_id']+'`,`'+validName(subContent[i]['education_group_name'])+'`)\">'+subContent[i]['education_group_name']+'</small></u>';
                 
                 }else{
-                        smallObj='<u><small  onclick=\"seth(`-'+subContent[i]['teacher_id']+'`,`'+validName(subContent[i]['teacher_name'])+'`)\">'+validName(subContent[i]['teacher_name'])+'</small></u>';}
+                        smallObj='<u><small class="upnametext" onclick=\"seth(`-'+subContent[i]['teacher_id']+'`,`'+validName(subContent[i]['teacher_name'])+'`)\">'+validName(subContent[i]['teacher_name'])+'</small></u>';}
                 colorbir=" toColorBir-"+subContent[i]['lesson_number'].toString()
-
-                        body+='<div href="#" class="list-group-item list-group-item-action'+colorbir+'" aria-current="true">'+
+                colorbirType=" toColorBirType-"+subContent[i]['type'].toString().replace('.','')
+                subgroup="подгруппа "+subContent[i]['subgroup']+","
+                if(subContent[i]['subgroup']=='0'){subgroup=''}
+                comments=''
+                for(gfi in subContent[i]['comments']){
+                    divdiz=''
+                    lastdiv=''
+                    if(gfi>=0){divdiz='<br>';}
+                    if(gfi==subContent[i]['comments'].length-1){divdiz='';lastdiv='<br>--------'}
+                    num=parseInt(gfi)+1
+                    comments+=("<i>["+num+"] "+subContent[i]['comments'][gfi]+"</i>"+divdiz+lastdiv)
+                }
+                
+        body+='<div href="#" class="list-group-item list-group-item-action'+colorbir+'" aria-current="true"><div class="row"><!--<div class="col-1 toDefWidth'+colorbir+'"></div>--><div onclick="togler('+subContent[i]['id']+')" class="col-2 toDefWidth rounded-pill'+colorbirType+'"></div>'+
+            '<div class="col-11">'+
             '<div class="d-flex w-100 justify-content-between">'+
-            '    <h5 class="mb-1">'+costi[subContent[i]['lesson_number']-1]+" "+edGroupId+subContent[i]['type']+""+subContent[i]['subject']+'</h5>'+
+            '<h5 class="mb-1">'+'<span style="font-size: 12px;">'+edGroupId+subContent[i]['type']+"</span>"+subContent[i]['subject']+'</h5>'+
             smallObj+
             '</div>'+
-            '<p class="mb-1">'+edGroupId+subContent[i]['place']+', ('+subContent[i]['lesson_number']+')<i>'+dictCallstring[subContent[i]['lesson_number']-1][0]+"-"+dictCallstring[subContent[i]['lesson_number']-1][1]+'</i></p>'+
+            '<p class="mb-1">'+costi[subContent[i]['lesson_number']-1]+" "+edGroupId+subContent[i]['place']+'<span style="font-size: 12px;">, '+subgroup+' <i>'+dictCallstring[subContent[i]['lesson_number']-1][0]+"-"+dictCallstring[subContent[i]['lesson_number']-1][1]+'</i></p></span>'+
+            '<p class="mb-1">'+comments+'</p></span>'+
             '<small class="text-muted">'+educzone+" edit:"+subContent[i]['id']+'</small>'+
+            '</div></div>'+
+            '<div class="collapse" id="scidred'+subContent[i]['id']+'"></br><div class="card card-block" style="color:black;">Тут место под форму редактора<br>Нужно добавить еще лист правок<br>Подумать над идентификацией<br>Короче добавляем просто будем новое расписание и ему в аргументе замены строить цепочку зависимостей. если число замен >0 делаем текущий день серым, а лучше в штриховке, мы же строители ёбана</div></div>'+
             '</div>'    
             }
             
             
             return body
         }
+    }
+
+    function raspWeekN(d){
+        d=d.split('-')
+        
+        var today = new Date(d[0], d[1], d[2]).getTime(); 
+        var now = new Date().getTime(); 
+        var week = Math.ceil((now - today) / (604800000)); 
+        //maping=week%2
+        //если false то не четная
+        if (week % 2==1)  {  
+            maping=true
+        }  else  {  
+            maping=false
+        } 
+        return maping
     }
     function updateRasp(){
         
