@@ -4,7 +4,9 @@
 3. кайфовать с рыботекста на списках, но потом придумать как их красиво группировать 
 4. обоссать и обосрать дропдаун чтобы работал как нужно мне а не сферическому негру в вакууме
 5. ИТБ-202 нельзя ввести тк их много а - не выкупает поисковик
+6. Нужно убрать дрищ не сортировки по номеру пар или сделать сортировку внутри exportlist по номеру пары чтобы не вылазило подобное дерьмище.![](https://sun9-11.userapi.com/impg/zp-yXh9ephZZ63UZgm1HV7TMWLcbIUEBidI1GA/NJrWnjceE1s.jpg?size=580x791&quality=96&sign=556c54e4247426e5f851cb79c74eea55&type=album)
+7. 
 
 10 этапов дерьма из 24
 
-![](https://sun9-35.userapi.com/impg/Y2ETVmsjF86n4mxg_g5xzH1pUaPGfa9uaG5Bzw/1JLBadgdQu8.jpg?size=610x1047&quality=96&sign=8e2aa2dc03810c1b33db4faa6e564ac9&type=album)
+![](https://sun9-45.userapi.com/impg/HY359cIWyeixDUUy8-oXAVUs7gcFN0cW06F54g/nxqxXOjM0Xo.jpg?size=844x636&quality=96&sign=dd4b850d1b72dd4facb30766b1f7ef6c&type=album)

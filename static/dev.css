@@ -49,6 +49,12 @@
 .upnametext{
     text-align: right;
 }
+.romandate{
+
+    text-decoration: overline;
+    
+    
+}
 .toDefWidth{
     width: 0px;
     padding: 5px;
