@@ -77,17 +77,20 @@
 <script>
     
     fsdadp=0
-    //ftgttext=localStorage.getItem('tgttext')
+    ftgttext=localStorage.getItem('tgttext')
+    ftgtid=localStorage.getItem('tgtid')
     //ftgtid = '-75942'
     //ftgttext='Коротин Владимир Олегович'
-    ftgtid=6265
-    ftgttext='КСс-211'
-    //ftgtid=localStorage.getItem('tgtid')
+    
+    
+    
     if(ftgttext!=null && ftgtid!=null){
         document.getElementById("myInput").placeholder=ftgttext;
         }
     else{
         document.getElementById("myInput").placeholder="Нажмите чтобы искать"
+    ftgtid=6265
+    ftgttext='КСс-211'
         }
     
     const baseURL='http://deepapi.khai.pw/icsshudle/web-api/v1.1d/'
